@@ -1,7 +1,6 @@
-# scripts/model.py
 from tensorflow.keras.applications import VGG16
 from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Dense, Flatten, Dropout
+from tensorflow.keras.layers import Dense, Flatten, Dropout, BatchNormalization
 from tensorflow.keras.optimizers import Adam
 
 def build_model(input_shape, num_classes):
@@ -18,8 +17,9 @@ def build_model(input_shape, num_classes):
     # Add custom layers on top
     print("Adding custom layers on top of the base model...")
     x = Flatten()(base_model.output)
-    x = Dense(128, activation='relu')(x)
-    x = Dropout(0.5)(x)
+    x = Dense(64, activation='relu')(x)  # Reduced complexity
+    x = BatchNormalization()(x)          # Add Batch Normalization
+    x = Dropout(0.5)(x)                  # Dropout for regularization
     output = Dense(num_classes, activation='softmax')(x)
 
     model = Model(inputs=base_model.input, outputs=output)
