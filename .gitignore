@@ -1,0 +1,56 @@
+# Python-specific ignores
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+pip-wheel-metadata/
+*.env  
+
+# Logs and debug information
+logs/
+*.log
+
+# TensorBoard logs and checkpoints
+logs/tensorboard_logs/
+events.out.tfevents.*
+
+# Model weights and files
+models/
+*.h5
+*.hdf5
+*.ckpt
+*.pb
+
+# IDE and Editor-specific files
+.vscode/
+*.swp
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+
+# Operating system files
+.DS_Store  # macOS
+Thumbs.db  # Windows
+
+# Other ignores
+*.bak
+*.tmp
+*.out
+*.temp
+*.~lock.*
+*.sql  
+
+# Flask-specific ignores
+instance/ 
