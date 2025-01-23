@@ -1,4 +1,4 @@
-from tensorflow.keras.applications import VGG16
+from tensorflow.keras.applications import NASNetMobile
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Dense, Flatten, Dropout, BatchNormalization
 from tensorflow.keras.optimizers import Adam
@@ -6,11 +6,11 @@ from tensorflow.keras.optimizers import Adam
 def build_model(input_shape, num_classes):
     print("Building the model...")
     
-    # Load pre-trained VGG16 model without the top layers
-    base_model = VGG16(weights='imagenet', include_top=False, input_shape=input_shape)
+    # Load pre-trained NASNetMobile model without the top layers
+    base_model = NASNetMobile(weights='imagenet', include_top=False, input_shape=input_shape)
     
     # Freeze the layers of the base model
-    print("Freezing the base VGG16 model layers...")
+    print("Freezing the base NASNetMobile model layers...")
     for layer in base_model.layers:
         layer.trainable = False
 

@@ -25,7 +25,7 @@ early_stopping = EarlyStopping(monitor='val_loss', patience=10, restore_best_wei
 
 # Train the model
 print(f"Training the model with {len(X_train)} training samples and {len(X_test)} testing samples...")
-model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=50, batch_size=32, callbacks=[checkpoint, tensorboard, early_stopping])
+model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=20, batch_size=32, callbacks=[checkpoint, tensorboard, early_stopping])
 
 # Save the final model
 print(f"Saving the trained model to {model_dir}...")
