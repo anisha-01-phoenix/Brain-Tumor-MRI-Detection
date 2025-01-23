@@ -50,7 +50,8 @@ Thumbs.db  # Windows
 *.out
 *.temp
 *.~lock.*
-*.sql  
+*.sql
+*heatmap*  
 
 # Flask-specific ignores
 instance/ 
