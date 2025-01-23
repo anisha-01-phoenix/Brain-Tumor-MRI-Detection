@@ -1,4 +1,3 @@
-# scripts/evaluate.py
 from tensorflow.keras.models import load_model
 from load_data import load_train_test_data
 
