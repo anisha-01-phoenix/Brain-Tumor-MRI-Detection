@@ -30,22 +30,17 @@ def preprocess_image(image, target_size=(128, 128)):
 
 # Generate Grad-CAM heatmap
 def generate_gradcam(image, layer_name="separable_conv_2_bn_normal_left5_12"):
-    # print("Image shape before passing to model:", image.shape)
     model = load_classification_model()
-    # print("Model input shape:", model.input_shape)
-    # model.summary()
     try:
         print("[INFO] Generating Grad-CAM heatmap...")
 
         # if image.ndim == 3:
         #     image = np.expand_dims(image, axis=0)
 
-        # grad_model = tf.keras.models.Model([model.input], [model.get_layer(layer_name).output, model.output])
         grad_model = tf.keras.models.Model(inputs=model.input, outputs=[model.get_layer(layer_name).output, model.output])
 
         # Convert the image to a tensor
         image = tf.convert_to_tensor(image, dtype=tf.float32)
-        # image = tf.expand_dims(image, axis=0)
 
         with tf.GradientTape() as tape:
             conv_outputs, predictions = grad_model(image)
@@ -89,6 +84,10 @@ def overlay_heatmap_on_image(original_image, heatmap):
 
 # Save image to file
 def save_image(image, path):
+    directory = os.path.dirname(path)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+        print(f"[INFO] Created missing directory: {directory}")
     try:
         print(f"[INFO] Saving image to {path}...")
         cv2.imwrite(path, image)
