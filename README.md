@@ -226,9 +226,8 @@ The API is also hosted on Render. You can access the deployed version of the Fas
 - **Description**: Upload an MRI image, and the API returns the Grad-CAM visualization, highlighting regions of interest.
 - **Request Body**: Form data with the image file.
 - **Example of API Response** :
-```json
 
-```
+  <img src="https://github.com/user-attachments/assets/32584f40-b97c-48ae-9978-fd97caf91d4b" alt="response" width="200"/>
 
 ### **3. Anomaly Detection**
 
@@ -238,9 +237,11 @@ The API is also hosted on Render. You can access the deployed version of the Fas
 - **Request Body**: Form data with the image file.
 - **Example of API Response** :
 ```json
-
+{
+    "anomaly_score": "0.0015279582",
+    "is_anomaly": "False"
+}
 ```
-
 ---
 
 ## **Conclusion**
